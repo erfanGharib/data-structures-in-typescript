@@ -1,6 +1,6 @@
-export class Arr {
+export class Arr<T> {
     _length: number;
-    _arr: Array<string>;
+    _arr: Array<T>;
     count: number;
 
     constructor(_length: number) {
@@ -9,7 +9,7 @@ export class Arr {
         this.count = 0;
     }
   
-    insert(item: string) {
+    insert(item: T) {
         if(this.count === this._length)
             throw new Error('Max array length reached!');
 

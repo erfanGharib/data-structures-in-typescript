@@ -1,17 +1,17 @@
 class _Node {
     val: number;
-    next: _Node;
+    next: _Node | null;
 
     constructor(val: number) {
-        this.val = val;
+        this.val  = val;
         this.next = null;
     }
 }
 
 class LinkedList {
-    private head: _Node;
-    private tail: _Node;
-    private size: number;
+    public head: _Node;
+    public tail: _Node;
+    public size: number;
 
     constructor() {
         this.head = null;
@@ -26,7 +26,7 @@ class LinkedList {
         return this.size;
     }
 
-    addFirst(item: number) {
+    addFirst(item: any) {
         const newNode = new _Node(item);
 
         if (this.isEmpty)
@@ -38,12 +38,12 @@ class LinkedList {
         this.size++;
     }
 
-    addLast(item: number) {
+    addLast(item: any) {
         const newNode = new _Node(item);
 
         if (this.isEmpty)
             this.head = this.tail = newNode;
-        else {
+        else if(this.tail) {
             this.tail.next = newNode;
             this.tail = newNode
         }
@@ -127,7 +127,6 @@ class LinkedList {
         let previous = this.head;
         let current = this.head.next;
 
-
         while(current) {
             let next = current.next;
             current.next = previous;
@@ -138,6 +137,7 @@ class LinkedList {
         this.tail = this.head;
         this.tail.next = null;
         this.head = previous;
-
     }
 }
+
+export default LinkedList;
